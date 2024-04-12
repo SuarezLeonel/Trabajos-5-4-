@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> contadorSecuencia(string Mensaje) {
+    int contador = 0;
+    vector<int> Secuencias;
+    for (int i = 0; i < Mensaje.size(); i++) {
+        if (Mensaje[i] == 'G') {
+            contador++;
+        } 
+		if (Mensaje[i] != 'G'){ {
+        if (contador > 0) {
+            Secuencias.push_back(contador);
+            contador = 0;
+            }
+        }
+		}
+    }
+    if (contador > 0) {
+        Secuencias.push_back(contador);
+    }
+    sort(Secuencias.begin(), Secuencias.end());
+    return Secuencias;
+}
+
+int ContadorSecuencia2(vector<int> Secuencias) {
+    return Secuencias[Secuencias.size() - 2];
+}
+
+int Distancia(string Mensaje, vector<int> Secuencias) {
+    int Posicion1 = 0;
+    int Posicion2 = 0;
+    int contador = 1;
+    int cantidad = 0;
+    for (int i = 0; i < Mensaje.size(); i++) {
+        if (Mensaje[i] == 'G') {
+            contador++;
+            
+        } 
+		if (Mensaje[i] != 'G'){
+        if (contador == Secuencias[Secuencias.size() - 1]) {
+            Posicion1 = i - contador;
+        }
+        if (contador == Secuencias[Secuencias.size() - 2]) {
+            Posicion2 = i;
+        }
+        contador = 0;
+        }
+    }
+    cantidad = Posicion1 - Posicion2;
+    return cantidad;
+}
+
+int main() {
+    string Mensaje;
+	getline(cin, Mensaje);
+	
+    vector<int> cantSecuencia = contadorSecuencia(Mensaje);
+    int cantLatas = Mensaje.size();
+    cout << "Cantidad de latas: " << cantLatas << endl;
+    cout << "Cantidad máxima de latas consecutivas: " << cantSecuencia.back() << endl;
+
+    int cantSecuencia2 = ContadorSecuencia2(cantSecuencia);
+    cout << "Segunda cantidad máxima de latas consecutivas: " << cantSecuencia2 << endl;
+
+    int distancia = Distancia(Mensaje, cantSecuencia);
+    cout << "Distancia entre las dos mayores secuencias: " << distancia << endl;
+
+    return 0;
+}
