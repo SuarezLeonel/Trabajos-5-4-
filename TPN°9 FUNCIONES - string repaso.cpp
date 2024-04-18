@@ -9,10 +9,11 @@ int main() {
     cout << "Ingrese la Frase: ";
     getline(cin, Mensaje); 
     
-    int inicio, fin;
-    cout << "Ingrese la posición de inicio: ";
+    int inicio = 0;
+    int fin = 0;
+    cout << "Ingrese la posiciÃ³n de inicio: ";
     cin >> inicio;
-    cout << "Ingrese la posición de fin: ";
+    cout << "Ingrese la posiciÃ³n de fin: ";
     cin >> fin;
 
     string MensajeInvertido = InvertirTexto(Mensaje, inicio, fin);
