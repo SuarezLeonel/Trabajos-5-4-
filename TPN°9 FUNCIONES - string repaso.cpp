@@ -5,12 +5,12 @@ string InvertirTexto(string Texto, int inicio, int fin);
 string ObtenerTextoInvertido(string Texto);
 
 int main() {
+    int inicio = 0;
+    int fin = 0;
     string Mensaje;
     cout << "Ingrese la Frase: ";
     getline(cin, Mensaje); 
     
-    int inicio = 0;
-    int fin = 0;
     cout << "Ingrese la posición de inicio: ";
     cin >> inicio;
     cout << "Ingrese la posición de fin: ";
