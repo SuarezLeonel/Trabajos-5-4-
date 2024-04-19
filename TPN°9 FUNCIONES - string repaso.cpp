@@ -2,7 +2,6 @@
 using namespace std;
 
 string InvertirTexto(string Texto, int inicio, int fin);
-string ObtenerTextoInvertido(string Texto);
 
 int main() {
     int inicio = 0;
