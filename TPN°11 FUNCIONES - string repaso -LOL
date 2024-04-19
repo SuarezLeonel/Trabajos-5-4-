@@ -12,14 +12,14 @@ int main(){
 }
 
 void cargarMatriz(int F, int C){
-    vector<vector<char> > Matriz(F, vector<char>(C));
-    char Letra;
+    vector<vector<string> > Matriz(F, vector<string>(C));
+    string Letra;
     for(int i = 0; i < F; i++){
         if(i % 2 == 0){
-            Letra = 'L';
+            Letra = "L";
         }
         if(i % 2 != 0){
-            Letra = 'O';
+            Letra = "O";
         }
         for(int j = 0; j < C; j++){
             Matriz[i][j] = Letra;
