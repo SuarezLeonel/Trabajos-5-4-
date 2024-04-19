@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int ContarLOL(vector<vector<char>>Matriz, int F, int C){
+    int Resultado = 0;
+    int ResultadoDiago = 0;
+    if(F > 2){
+    for(int i = 0; i < C; i++){
+            if(Matriz[0][i] == 'L' && Matriz[1][i] == 'O' && Matriz[2][i] == 'L'){
+               Resultado++;
+            }
+            if(i < C-2)
+            if (Matriz[0][i] == 'L' && Matriz[1][i+1] == 'O' && Matriz[2][i+2] == 'L'){
+            ResultadoDiago++;
+            }
+    }
+    }
+    int Resultotal= ResultadoDiago*2 + Resultado;
+    return Resultotal;
+}
+
+vector<vector<char>>cargarMatriz(int F, int C){
+    vector<vector<char>> Matriz(F, vector<char>(C));
+    char Letra;
+    for(int i = 0; i < F; i++){
+        if(i % 2 == 0){
+            Letra = 'L';
+        }
+        if(i % 2 != 0){
+            Letra = 'O';
+        }
+        for(int j = 0; j < C; j++){
+            Matriz[i][j] = Letra;
+            cout<<Letra;
+            
+        }
+        cout<<endl;
+    }   
+    return Matriz;
+}
+
+int main(){
+    int F = 0;
+    int C = 0;
+    cin >> F;
+    cin >> C;
+    vector<vector<char>> result = cargarMatriz(F, C);
+    int Cuenta = ContarLOL (result, F, C);
+    cout << Cuenta;
+}
