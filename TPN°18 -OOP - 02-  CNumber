@@ -1,0 +1,95 @@
+// 1) Diseñar una clase llamada CNumber que tenga 3 números en la parte private. 
+// Y que calcule (en la parte public)
+// a) El máximo de los 3 números.
+// b) El mínimo de los 3 números
+// c) El promedio de los 3 números
+// d) La cantidad de elementos pares.
+// e) La cantidad de elementos impares 
+
+#include <iostream>
+using namespace std;
+
+class CNumber {
+private:
+    int num1;
+    int num2;
+    int num3;
+
+public:
+    CNumber(int a, int b, int c);
+    int numMax();
+    int numMin();
+    float promedioNums();
+    int CalcularPares();
+    int CalcularImpares();
+};
+
+CNumber::CNumber(int a, int b, int c) {
+    num1 = a;
+    num2 = b;
+    num3 = c;
+}
+
+int CNumber::numMax() {
+    int max = num1;
+    if (num2 > max)
+        max = num2;
+    if (num3 > max)
+        max = num3;
+    return max;
+}
+
+int CNumber::numMin() {
+    int min = num1;
+    if (num2 < min)
+        min = num2;
+    if (num3 < min)
+        min = num3;
+    return min;
+}
+
+float CNumber::promedioNums() {
+    return (num1 + num2 + num3) / 3.0;
+}
+
+int CNumber::CalcularPares() {
+    int cont = 0;
+    if (num1 % 2 == 0)
+        cont++;
+    if (num2 % 2 == 0)
+        cont++;
+    if (num3 % 2 == 0)
+        cont++;
+    return cont;
+}
+
+int CNumber::CalcularImpares() {
+    int cont = 0;
+    if (num1 % 2 != 0)
+        cont++;
+    if (num2 % 2 != 0)
+        cont++;
+    if (num3 % 2 != 0)
+        cont++;
+    return cont;
+}
+
+int main() {
+    int a, b, c;
+    cout << "Ingrese el primer numero: " << endl;
+    cin >> a; 
+	cout << "Ingrese el segundo numero: " << endl;
+	cin >> b; 
+	cout << "Ingrese el tercer numero: " << endl;
+	cin >> c;
+
+    CNumber Numeros(a, b, c);
+
+    cout << "El numero maximo es: " << Numeros.numMax() << endl;
+    cout << "El numero minimo es: " << Numeros.numMin() << endl;
+    cout << "El promedio de los numeros es: " << Numeros.promedioNums() << endl;
+    cout << "Cantidad de numeros pares: " << Numeros.CalcularPares() << endl;
+    cout << "Cantidad de numeros impares: " << Numeros.CalcularImpares() << endl;
+    
+    return 0;
+}
