@@ -1,0 +1,65 @@
+#include 
+
+using namespace std;
+
+class CEmpleado {
+private:
+    string nombre;
+    int anoIngreso;
+    double salario;
+    string direccion;
+
+public:
+    CEmpleado(string nombre, int anoIngreso, double salario, string direccion) 
+        : nombre(nombre), anoIngreso(anoIngreso), salario(salario), direccion(direccion) {}
+
+    void imprimirInformacion() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Año de Ingreso: " << anoIngreso << endl;
+        cout <<"Direccion: " << direccion << endl;
+    }
+
+    int calcularAntiguedad() {
+        int anioActual = 2024;
+        return anioActual - anoIngreso;
+    }
+
+    bool viveEnWallStreet() {
+        return direccion.find("WallStreet") != -1;
+    }
+};
+
+int main() {
+    string nombre;
+    int anoIngreso;
+    double salario;
+    string direccion;
+
+    cout << "Ingrese el nombre: ";
+    getline(cin, nombre);
+
+    cout << "Ingrese el año de ingreso: ";
+    cin >> anoIngreso;
+    cin.ignore(); 
+
+    cout << "Ingrese el salario: ";
+    cin >> salario;
+    cin.ignore(); 
+
+    cout << "Ingrese la dirección: ";
+    getline(cin, direccion);
+
+    CEmpleado empleado(nombre, anoIngreso, salario, direccion);
+
+    empleado.imprimirInformacion();
+    
+    int antiguedad = empleado.calcularAntiguedad();
+    cout << "Años de antigüedad: " << antiguedad << endl;
+
+    if (empleado.viveEnWallStreet() == true) {
+        cout << "El empleado vive en Wall Street." << endl;
+    } 
+    if(empleado.viveEnWallStreet() == false) {
+        cout << "El empleado no vive en Wall Street." << endl;
+    }
+}
