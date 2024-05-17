@@ -10,8 +10,7 @@ private:
     string direccion;
 
 public:
-    CEmpleado(string nombre, int anoIngreso, double salario, string direccion) 
-        : nombre(nombre), anoIngreso(anoIngreso), salario(salario), direccion(direccion) {}
+    CEmpleado(string nombre, int anoIngreso, double salario, string direccion) : nombre(nombre), anoIngreso(anoIngreso), salario(salario), direccion(direccion) {}
 
     void imprimirInformacion() {
         cout << "Nombre: " << nombre << endl;
