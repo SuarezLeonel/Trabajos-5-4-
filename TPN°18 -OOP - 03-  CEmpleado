@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class CEmpleado {
@@ -24,7 +25,8 @@ public:
     }
 
     bool viveEnWallStreet() {
-        return direccion.find("Wall Street") != string::npos;
+        bool viveWall = direccion.find("Wall Street") != -1;
+        return viveWall;
     }
 };
 
@@ -33,14 +35,14 @@ int main() {
     int añoIngreso;
     float salario;
 
-    cout << "Introduce el nombre del empleado: ";
+    cout << "Nombre del empleado: ";
     getline(cin, nombre);
-    cout << "Introduce el año de ingreso: ";
+    cout << "Año de ingreso: ";
     cin >> añoIngreso;
-    cout << "Introduce el salario: $";
+    cout << "Salario: $";
     cin >> salario;
     cin.ignore(); 
-    cout << "Introduce la dirección: ";
+    cout << "Dirección: ";
     getline(cin, direccion);
 
     CEmpleado empleado(nombre, añoIngreso, salario, direccion);
