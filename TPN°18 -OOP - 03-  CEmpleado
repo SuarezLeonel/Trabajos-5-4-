@@ -1,64 +1,58 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 class CEmpleado {
 private:
     string nombre;
-    int anoIngreso;
-    double salario;
+    int añoIngreso;
+    float salario;
     string direccion;
 
 public:
-    CEmpleado(string nombre, int anoIngreso, double salario, string direccion) : nombre(nombre), anoIngreso(anoIngreso), salario(salario), direccion(direccion) {}
 
-    void imprimirInformacion() {
-        cout << "Nombre: " << nombre << endl;
-        cout << "Año de Ingreso: " << anoIngreso << endl;
-        cout <<"Direccion: " << direccion << endl;
+    CEmpleado(string n, int y, float s, string addr) {
+        nombre = n;
+        añoIngreso = y;
+        salario = s;
+        direccion = addr;
     }
 
-    int calcularAntiguedad() {
-        int anioActual = 2024;
-        return anioActual - anoIngreso;
+    void mostrarInfo() {
+        cout << "Nombre: " << nombre << endl;
+        cout << "Año de ingreso: " << añoIngreso << endl;
+        cout << "Salario: $" << salario << endl;
+        cout << "Dirección: " << direccion << endl;
     }
 
     bool viveEnWallStreet() {
-        return direccion.find("WallStreet") != -1;
+        return direccion.find("Wall Street") != string::npos;
     }
 };
 
 int main() {
-    string nombre;
-    int anoIngreso;
-    double salario;
-    string direccion;
+    string nombre, direccion;
+    int añoIngreso;
+    float salario;
 
-    cout << "Ingrese el nombre: ";
+    cout << "Introduce el nombre del empleado: ";
     getline(cin, nombre);
-
-    cout << "Ingrese el año de ingreso: ";
-    cin >> anoIngreso;
-    cin.ignore(); 
-
-    cout << "Ingrese el salario: ";
+    cout << "Introduce el año de ingreso: ";
+    cin >> añoIngreso;
+    cout << "Introduce el salario: $";
     cin >> salario;
     cin.ignore(); 
-
-    cout << "Ingrese la dirección: ";
+    cout << "Introduce la dirección: ";
     getline(cin, direccion);
 
-    CEmpleado empleado(nombre, anoIngreso, salario, direccion);
+    CEmpleado empleado(nombre, añoIngreso, salario, direccion);
 
-    empleado.imprimirInformacion();
-    
-    int antiguedad = empleado.calcularAntiguedad();
-    cout << "Años de antigüedad: " << antiguedad << endl;
+    empleado.mostrarInfo();
 
-    if (empleado.viveEnWallStreet() == true) {
+    bool viveEnWallStreet = empleado.viveEnWallStreet();
+    if (viveEnWallStreet) {
         cout << "El empleado vive en Wall Street." << endl;
     } 
-    if(empleado.viveEnWallStreet() == false) {
+    if (viveEnWallStreet == false) {
         cout << "El empleado no vive en Wall Street." << endl;
     }
 }
