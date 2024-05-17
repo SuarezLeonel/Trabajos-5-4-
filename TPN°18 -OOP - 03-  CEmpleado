@@ -9,7 +9,6 @@ private:
     string direccion;
 
 public:
-
     CEmpleado(string n, int y, float s, string addr) {
         nombre = n;
         añoIngreso = y;
