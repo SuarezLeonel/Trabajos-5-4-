@@ -1,0 +1,106 @@
+#include 
+
+using namespace std;
+
+class Empleado {
+private:
+    string nombre;
+    string apellido;
+    string domicilio;
+    int cantidadHijos;
+    float sueldoBasico;
+    int antiguedad;
+
+    float calcularJubilacion() {
+        float jubilacion= sueldoBasico * 0.11;
+        return jubilacion;
+    }
+
+    float calcularObraSocial() {
+        float obraSocial= sueldoBasico * 0.03;
+        return obraSocial;
+    }
+
+    float calcularINSSJP() {
+        float INSSJP= sueldoBasico * 0.03;
+        return INSSJP;
+    }
+
+public:
+    Empleado(string nom, string ape, int hijos, float sueldo, int antig) : nombre(nom), apellido(ape), cantidadHijos(hijos), sueldoBasico(sueldo), antiguedad(antig) {}
+
+    void setNombre(string nom) {
+        nombre= nom;
+    }
+
+    string getNombre() {
+        return nombre;
+    }
+
+    void setApellido(string ape) {
+        apellido= ape;
+    }
+
+    string getApellido() {
+        return apellido;
+    }
+
+    void setDomicilio(string dom) {
+        domicilio= dom;
+    }
+
+    string getDomicilio() {
+        return domicilio;
+    }
+
+    void setCantidadHijos(int hijos) {
+        cantidadHijos= hijos;
+    }
+
+    int getCantidadHijos() {
+        return cantidadHijos;
+    }
+
+    void setSueldoBasico(float sueldo) {
+        sueldoBasico= sueldo;
+    }
+
+    float getSueldoBasico() {
+        return sueldoBasico;
+    }
+
+    void setAntiguedad(int antig) {
+        antiguedad= antig;
+    }
+
+    int getAntiguedad() {
+        return antiguedad;
+    }
+
+    float calcularDeducciones() {
+        int deducciones= calcularJubilacion() + calcularObraSocial() + calcularINSSJP();
+        return deducciones;
+    }
+
+    float calcularSueldoNeto() {
+        int sueldoNeto= sueldoBasico - calcularDeducciones();
+        return sueldoNeto;
+    }
+
+    void imprimirDetalles() {
+        cout << "Nombre: " << nombre << " " << apellido << endl;
+        cout << "Domicilio: " << domicilio << endl;
+        cout << "Cantidad de Hijos: " << cantidadHijos << endl;
+        cout << "Sueldo Basico: $" << sueldoBasico << endl;
+        cout << "Antiguedad: " << antiguedad << " anios" << endl;
+        cout << "Deducciones: $" << calcularDeducciones() << endl;
+        cout << "Sueldo Neto: $" << calcularSueldoNeto() << endl;
+    }
+};
+
+int main() {
+    Empleado empleado("Juan", "Rodriguez", 3, 900000, 12);
+    empleado.imprimirDetalles();
+
+    return 0;
+}
